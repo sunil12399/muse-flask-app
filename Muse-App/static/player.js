@@ -196,6 +196,7 @@ function init() {
 }
 
 function onPageLoad() {
+  console.log('page loading')
   promise.then(()=>{
     try{
       init();
@@ -204,10 +205,11 @@ function onPageLoad() {
       maxSong = elements.songsList.length-1;
       elements.totalSongs.innerHTML = maxSong+1;
       newSongs = true;
+      console.log(songs)
       document.getElementsByClassName('loader')[0].style.display = 'none';
       document.getElementById('showPlayer').style.display = 'block';
     }catch(error){
-      console.log('mera error')
+      console.log('mera error');
       throw new HttpException(404, 'Page not found');
     }
   }).catch(()=>{

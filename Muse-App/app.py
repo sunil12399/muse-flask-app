@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for, abort
+from flask import Flask, request, jsonify, render_template, redirect, url_for, abort, send_from_directory
 import utils
 
 app = Flask(__name__)
 app.config.from_mapping(
-    SECRET_KEY='48910da51565f526fe73ca83a5141aef33272a0909472e3af7415d77a0afab24',
+    SECRET_KEY='dev',
     )
+
+@app.route('/favicon.ico') 
+def favicon(): 
+    return send_from_directory('static', 'favicon.ico', mimetype='note.png')
 
 @app.route('/')
 def index():
@@ -16,9 +20,8 @@ def predict_music():
     melody = request.form['song']
     melody = melody.strip()
     if melody == '':
-        return render_template('editor.html', name='Muse') 
-    return redirect(url_for("player"))
-    
+        return render_template('editor.html', name='Muse')
+    return redirect(url_for("player"))  
 
 @app.route("/get-songs", methods = ['GET'])
 def getSongs():
@@ -26,7 +29,6 @@ def getSongs():
         data = utils.extract(melody)
         if len(data) == 0:
             abort(500)
-        
         response = jsonify({
             'original': melody,
             'predictions' : data
@@ -53,4 +55,4 @@ if __name__ == "__main__":
     print("Starting Python Server")
     utils.load_saved_artifacts()
     app.register_error_handler(404, page_not_found)
-    app.run(debug=False, port = 8000, host='0.0.0.0')
+    app.run(debug=False, port = 3000)
