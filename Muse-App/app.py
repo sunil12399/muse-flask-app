@@ -53,4 +53,4 @@ if __name__ == "__main__":
     print("Starting Python Server")
     utils.load_saved_artifacts()
     app.register_error_handler(404, page_not_found)
-    app.run(debug=True, port = 3000)
+    app.run(debug=False, port = 8000, host='0.0.0.0')
