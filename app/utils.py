@@ -68,11 +68,11 @@ def load_saved_artifacts():
     global __data_columns
     global __char2idx
     global __idx2char
-    with open(r"Muse-App/char2idx.json", "r") as f:
+    with open(r"app/char2idx.json", "r") as f:
         __char2idx = json.load(f)
-    with open(r"Muse-App/idx2char.json", "r") as f:
+    with open(r"app/idx2char.json", "r") as f:
         __idx2char = json.load(f)
-    __model = tf.keras.models.load_model(r'Muse-App/saved_model/my_model')
+    __model = tf.keras.models.load_model(r'app/saved_model/my_model')
     print('model build')
 
 if __name__=="__main__":

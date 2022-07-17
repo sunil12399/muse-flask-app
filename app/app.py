@@ -2,9 +2,8 @@ from flask import Flask, request, jsonify, render_template, redirect, url_for, a
 import utils
 
 app = Flask(__name__)
-app.config.from_mapping(
-    SECRET_KEY='dev',
-    )
+app.register_error_handler(404, page_not_found)
+app.run(debug=False, port = 3000)
 
 @app.route('/favicon.ico') 
 def favicon(): 
