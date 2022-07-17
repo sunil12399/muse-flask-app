@@ -1,6 +1,6 @@
 import json
 import tensorflow as tf
-import mitdeeplearning as mdl
+import lab1
 
 __model = None
 __data_columns = None
@@ -51,7 +51,7 @@ def generate_text(model, start_string, generation_length=500):
 
 def extract(string2):
     generated_text1 = generate_text(__model, start_string=string2, generation_length=500) # TODO
-    generated_songs = mdl.lab1.extract_song_snippet(generated_text1)
+    generated_songs = lab1.extract_song_snippet(generated_text1)
     return generated_songs
 
 
