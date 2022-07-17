@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block title %}
+Player
+{% endblock %}
+{% block stylesheets %}
+  <script type="module" src="{{url_for('static', filename='server-query.js') }}"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='animation.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='music_player.css') }}">
+{% endblock %}
+{% block content %}
+<div class="loader">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div id="showPlayer">
+  <div id="top-left">
+    <p>
+      <label for="instrument-picker">
+          Select instrument:
+          <select id="instrument-picker">
+              <option value="0">Acoustic Piano</option>
+              <option value="4">Electric Piano</option>
+              <option value="6">Harpsichord</option>
+              <option value="7">Clavi</option>
+              <option value="8">Celesta</option>
+              <option value="23">Tango Accordion</option>
+              <option value="24">Acoustic Guitar (nylon)</option>
+              <option value="25">Acoustic Guitar (steel)</option>
+              <option value="26">Electric Guitar (jazz)</option>
+              <option value="56">Trumpet</option>
+              <option value="57">Trombone</option>
+              <option value="58">Tuba</option>
+              <option value="59">Muted Trumpet</option>
+              <option value="60">French Horn</option>
+          </select>
+      </label>
+  </p>
+  </div>
+    <div id = 'top-right'>
+      <label for="ms-download">
+        <div class="ms-content">
+          <div class="ms-content-inside">
+            <input type="checkbox" id="ms-download" />
+            <div class="ms-line-down-container">
+              <div class="ms-line-down"></div>
+            </div>
+            <div class="ms-line-point"></div>
+          </div>
+        </div>
+      </label>
+    </div>
+      <!-- partial:index.partial.html -->
+    <section class="device">
+      <div class="device__top">
+        <img class="album-art" src="https://res.cloudinary.com/andrewcanham/image/upload/v1579132801/everything-everything.jpg" alt="album art" />
+        <img class="album-art" src="https://res.cloudinary.com/andrewcanham/image/upload/v1579132801/jamie-xx.jpg" alt="album art" />
+        <img class="album-art" src="https://res.cloudinary.com/andrewcanham/image/upload/v1579132801/gidge.jpg" alt="album art" />
+        <img class="album-art" src="https://res.cloudinary.com/andrewcanham/image/upload/v1579132801/everything-everything.jpg" alt="album art" />
+      </div>
+      <div class="device__mid">
+        <div class="info">
+          <hgroup class="info__left">
+            <h1 class="info__song">
+              <span class="song"></span>
+            </h1>
+          </hgroup>
+
+          <hgroup class="info__right">
+            <h1 class="info__type">Playlist <span id="current-song">1</span> of <span id="total-songs">1</span></h1>
+          </hgroup>
+        </div>
+
+      </div>
+      <div class="device__bottom">
+        <div class="controls">
+          <button class="controls__round-button" id="previous-button">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.13672 5L9.5 0.5V9.5L3.13672 5ZM0.5 0.5H2.01172V9.5H0.5V0.5Z" />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button class="controls__round-button controls__round-button--large" id="play-button">
+            <div class="play">
+              <svg class="controls__play" width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.0195312 0.269531L13.7305 9L0.0195312 17.7305V0.269531Z"/>
+              </svg>
+              <span class="sr-only">Play</span>
+            </div>
+            <div class="pause">
+              <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5195 0.269531H15.5V17.7305H10.5195V0.269531ZM0.5 17.7305V0.269531H5.48047V17.7305H0.5Z" fill="#728C98"/>
+              </svg>
+              <span class="sr-only">Pause</span>
+            </div>
+          </button>
+          <button class="controls__round-button" id="next-button">
+            <svg aria-hidden="true" focusable="false" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.98828 0.5H9.5V9.5H7.98828V0.5ZM0.5 9.5V0.5L6.86328 5L0.5 9.5Z" />
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='abcjs-basic.js') }}"></script>
+<script type="module" src="{{ url_for('static', filename='player.js') }}"></script>
+{% endblock %}
