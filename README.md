@@ -1,5 +1,4 @@
 # muse-flask-app
-# muse-flask-app
 1. Open  the home-page
 
 
